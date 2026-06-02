@@ -7,7 +7,9 @@ const ekartRouter = require('./routers/ekartRouters')
 const myapp = express();
 connectDatabase()
 
-myapp.use('ekartApi', ekartRouter)
+myapp.use(express.json())
+
+myapp.use('/ekartApi', ekartRouter)
 
 const PORT = process.env.PORT;
 myapp.listen(PORT , err => {
