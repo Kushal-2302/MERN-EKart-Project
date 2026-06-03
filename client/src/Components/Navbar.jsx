@@ -8,7 +8,10 @@ const Navbar = () => {
                 <div className="search">
                     <input type="text" placeholder='Search Items'/>
                 </div>
-                <div className="links">Links</div>
+                <div className="links">
+                    <div className="login">🙍‍♂️</div>
+                    <div className="cart">🛒</div>
+                </div>
             </div>
         </>
     )
