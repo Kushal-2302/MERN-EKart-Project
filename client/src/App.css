@@ -4,3 +4,37 @@
   box-sizing: border-box;
   font-family: sans-serif;
 }
+
+.navbar{
+  height: 15vh;
+  width: 100%;
+  display: flex;
+  .logo , .search , .links {
+    height: 100%;
+    display: grid;
+    place-content: center;
+  }
+  .logo{
+    background: lightblue;
+    width: 20%;
+  }
+  .search{
+    background: lightgray;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    input{
+      width: 70%;
+      height: 50%;
+      font-weight: bold;
+      padding: 0 1vw;
+      border-radius: 10px;
+      border: none;
+      font-size: larger;
+    }
+  }
+  .links{
+    background: lightgreen;
+    width: 30%;
+  }
+}
