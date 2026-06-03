@@ -1,12 +1,13 @@
 const express = require('express');
 require('dotenv').config()
+const cors = require('cors')
 
 const {connectDatabase} = require('./database/mydb')
 const ekartRouter = require('./routers/ekartRouters')
 
 const myapp = express();
+myapp.use(cors())
 connectDatabase()
-
 myapp.use(express.json())
 
 myapp.use('/ekartApi', ekartRouter)
