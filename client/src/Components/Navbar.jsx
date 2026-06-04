@@ -1,4 +1,5 @@
 import React from 'react'
+// import {logo} from '../assets/images/ekart-logo.png'
 
 const Navbar = () => {
     return (
