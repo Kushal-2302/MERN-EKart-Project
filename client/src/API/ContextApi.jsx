@@ -35,9 +35,22 @@ const ContextApi = () => {
     setSingleProduct(res)
     navigate('/viewmore')
   }
+
+
+  //!Search Product through Title
+  let handleSearchBar = async (e) => {
+    let titlename = e.target.value;
+    if(!titlename){
+      getApiData()
+      return;
+    }
+    let respApi = await fetch(`http://localhost:5000/ekartApi/ekart/name/${titlename}`)
+    let res = await respApi.json()
+    setEkartObj(res)
+  }
   return (
     <>
-    <EkartApi.Provider value={{ekartObj , handleViewMore , singleProduct}}>
+    <EkartApi.Provider value={{ekartObj , handleViewMore , singleProduct , handleSearchBar}}>
         <App />
       </EkartApi.Provider>
     </>
