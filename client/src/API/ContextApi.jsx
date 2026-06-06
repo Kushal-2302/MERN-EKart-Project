@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import App from "../App";
 
 export const EkartApi = createContext();
+export const AdminContext = createContext();
 
 const ContextApi = () => {
   
@@ -48,10 +49,31 @@ const ContextApi = () => {
     let res = await respApi.json()
     setEkartObj(res)
   }
+
+
+  //! Delete single Product
+  let handleDeleteOneProduct = async (id) => {
+    let bool = window.confirm("Do you want to Delete this Product ...?")
+    if(bool){
+      try {
+        let deleteResp = await fetch(`http://localhost:5000/ekartApi/ekart/${id}` , {
+        method : "DELETE"
+    })
+    let deleteRespObj = await deleteResp.json()
+    alert(deleteRespObj.message)
+      } catch (error) {
+        alert(error.message)
+      }
+    }else{
+      alert('Product is not deleted')
+    }
+  }
   return (
     <>
     <EkartApi.Provider value={{ekartObj , handleViewMore , singleProduct , handleSearchBar}}>
-        <App />
+        <AdminContext.Provider value={{handleDeleteOneProduct}}>
+          <App/>
+        </AdminContext.Provider>
       </EkartApi.Provider>
     </>
   );
