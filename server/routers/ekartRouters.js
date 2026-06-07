@@ -6,7 +6,7 @@
 
 //?----------------------------------------------------
 const {Router} = require('express')
-const {addProduct , getAllProducts , getSingleProduct , deleteOneProduct} = require('../controller/controller')
+const {addProduct , getAllProducts , getSingleProduct ,getProductByTitle , deleteOneProduct} = require('../controller/controller')
 
 
 const ekartRouter = Router();
@@ -14,6 +14,7 @@ const ekartRouter = Router();
 ekartRouter.post('/ekart' , addProduct)
 ekartRouter.get('/ekart' , getAllProducts)
 ekartRouter.get('/ekart/:id' , getSingleProduct)
+ekartRouter.get('/ekart/name/:name' , getProductByTitle)
 ekartRouter.delete('/ekart/:id' , deleteOneProduct)
 
 module.exports = ekartRouter
