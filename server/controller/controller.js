@@ -1,5 +1,7 @@
 const ekartSchema = require("../model/schema");
 
+
+//todo : Ekart schema
 //! Add Product
 exports.addProduct = async (req, res) => {
   try {
@@ -54,6 +56,29 @@ exports.getSingleProduct = async (req, res) => {
   }
 };
 
+//!  Fetch by title
+exports.getProductByTitle = async (req, res) => {
+  try {
+    let payload = await ekartSchema.find({
+      name: {
+        $regex : req.params.name,
+        $options : "i" //? i indicates case-insensitive
+      }
+    });
+    res.status(200).json({
+      success: true,
+      message: "Matching data is fetched",
+      payload,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Product is not matching",
+      error: error.message,
+    });
+  }
+};
+
 //! Delete the product by Id
 exports.deleteOneProduct = async (req, res) => {
   try {
@@ -65,9 +90,49 @@ exports.deleteOneProduct = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({
-        success : false,
-        message : "Product is not Deleted",
-        error : error.message
-    })
+      success: false,
+      message: "Product is not Deleted",
+      error: error.message,
+    });
   }
 };
+
+
+
+
+// //todo: Category schema
+// //!Add category products
+// exports.addCategoryProduct = async (req, res) => {
+//   try {
+//     let payload = await categorySchema.create(req.body);
+//     res.status(200).json({
+//       success: true,
+//       message: "CategoryProduct is Added",
+//       payload,
+//     });
+//   } catch (error) {
+//     res.status(500).json({
+//       success: false,
+//       message: "CategoryProduct is not Added",
+//       error: error.message,
+//     });
+//   }
+// };
+
+// //! Get Category products
+// exports.getAllCategoryProducts = async (req, res) => {
+//   try {
+//     let payload = await ekartSchema.find({});
+//     res.status(200).json({
+//       success: true,
+//       message: "All Category Products are displayed",
+//       payload,
+//     });
+//   } catch (error) {
+//     res.status(500).json({
+//       success: false,
+//       message: "Category Products are not displayed",
+//       error: error.message,
+//     });
+//   }
+// };
