@@ -45,6 +45,8 @@ const Products = () => {
         <h2>All Products</h2>
         <button onClick={()=>navigate('/me-as-admin/addproducts')}>Add Products</button>
       </div>
+
+      {/* Product section */}
       <div className="container">
         {products.map((elem, index) => {
           let { _id, name, image } = elem;
