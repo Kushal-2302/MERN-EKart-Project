@@ -37,7 +37,7 @@ const ContextApi = () => {
     navigate('/viewmore')
   }
 
-
+  //? search product through title
   //!Search Product through Title
   let handleSearchBar = async (e) => {
     let titlename = e.target.value;
