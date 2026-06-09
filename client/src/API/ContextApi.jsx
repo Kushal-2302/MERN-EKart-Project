@@ -18,6 +18,7 @@ const ContextApi = () => {
       let respObj = await response.json();
       setEkartObj(respObj);
       console.log(ekartObj)
+      console.log(ekartObj)
     } catch (error) {
       console.log(`Server is not Started : ${error.message}`);
     }
